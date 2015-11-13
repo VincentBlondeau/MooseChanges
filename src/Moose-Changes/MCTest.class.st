@@ -51,19 +51,19 @@ MCTest >> testChangesDel [
 		named: 'OutputServer'
 		container: 'moose::lan::server'.
 	cm1 := MCDeleteComponent
-		addEntityTypedAs: FAMIXMethod
+		delEntityTypedAs: FAMIXMethod
 		named: 'accept(Packet)'
 		container: 'moose::lan::server::OutputServer'.
 	cm2 := MCDeleteComponent
-		addEntityTypedAs: FAMIXMethod
+		delEntityTypedAs: FAMIXMethod
 		named: 'canOutput()'
 		container: 'moose::lan::server::OutputServer'.
 	cm3 := MCDeleteComponent
-		addEntityTypedAs: FAMIXMethod
+		delEntityTypedAs: FAMIXMethod
 		named: 'output(Packet)'
 		container: 'moose::lan::server::OutputServer'.
 	ca1 := MCDeleteComponent
-		addEntityTypedAs: FAMIXAttribute
+		delEntityTypedAs: FAMIXAttribute
 		named: 'serverType'
 		container: 'moose::lan::server::OutputServer'.
 	model
@@ -80,6 +80,6 @@ MCTest >> testChangesDel [
 			(cm3 -> c1).
 			(ca1 -> c1)}.
 	model addAll: dependencies.
-	self assert: (model allWithType: MCAddComponent) size equals: 5.
+	self assert: (model allWithType: MCDeleteComponent) size equals: 5.
 	self assert: (model allWithType: MCDependency) size equals: 4
 ]

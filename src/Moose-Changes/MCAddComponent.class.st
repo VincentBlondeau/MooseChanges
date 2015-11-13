@@ -6,24 +6,10 @@ Class {
 
 { #category : #'class initialization' }
 MCAddComponent class >> addEntityTypedAs: aClass named: aMooseName container: aFAMIXContainer [
-	^ self new
-		type: aClass;
-		name: aMooseName;
-		container: aFAMIXContainer;
-		yourself
+	^ self entityTypedAs: aClass named: aMooseName container: aFAMIXContainer
 ]
 
 { #category : #'as yet unclassified' }
 MCAddComponent class >> changeFor [
 	^ #(#Composite)
-]
-
-{ #category : #accessing }
-MCAddComponent >> container [
-	^ container
-]
-
-{ #category : #accessing }
-MCAddComponent >> container: anObject [
-	container := anObject
 ]

@@ -1,7 +1,7 @@
 Class {
 	#name : #MCAddComponent,
 	#superclass : #MCAbstractComponentChange,
-	#category : #'Moose-Changes'
+	#category : #'Moose-Changes-Model'
 }
 
 { #category : #'class initialization' }

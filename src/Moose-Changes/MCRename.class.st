@@ -1,7 +1,7 @@
 Class {
 	#name : #MCRename,
 	#superclass : #MCAbstractChange,
-	#category : #'Moose-Changes'
+	#category : #'Moose-Changes-Model'
 }
 
 { #category : #'as yet unclassified' }

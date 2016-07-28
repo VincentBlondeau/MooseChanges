@@ -7,7 +7,7 @@ Class {
 		'outgoingDependencies',
 		'incomingDependencies'
 	],
-	#category : #'Moose-Changes'
+	#category : #'Moose-Changes-Model'
 }
 
 { #category : #'as yet unclassified' }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'container'
 	],
-	#category : #'Moose-Changes'
+	#category : #'Moose-Changes-Model'
 }
 
 { #category : #'class initialization' }

@@ -5,7 +5,7 @@ Class {
 		'source',
 		'target'
 	],
-	#category : #'Moose-Changes'
+	#category : #'Moose-Changes-Model'
 }
 
 { #category : #'class initialization' }

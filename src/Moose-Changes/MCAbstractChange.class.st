@@ -7,8 +7,18 @@ Class {
 		'outgoingDependencies',
 		'incomingDependencies'
 	],
+	#classVars : [
+		'ChangeTypeRegistry'
+	],
 	#category : #'Moose-Changes-Model'
 }
+
+{ #category : #meta }
+MCAbstractChange class >> annotation [
+	<MSEClass: #AbstractChange super: #MooseEntity>
+	<package: #MooseChange>
+	<abstract>
+]
 
 { #category : #'as yet unclassified' }
 MCAbstractChange class >> changeFor [
@@ -16,8 +26,31 @@ MCAbstractChange class >> changeFor [
 ]
 
 { #category : #'as yet unclassified' }
+MCAbstractChange class >> changeTypeRegistry [
+	^ ChangeTypeRegistry
+]
+
+{ #category : #'class initialization' }
+MCAbstractChange class >> initialize [
+	ChangeTypeRegistry := Dictionary new
+]
+
+{ #category : #'as yet unclassified' }
+MCAbstractChange class >> isChangeFor: aTypeOfChange [
+	^ self changeTypeList 
+		includes: aTypeOfChange
+]
+
+{ #category : #accessing }
 MCAbstractChange class >> types [
 	^ #(Simple Composite Link)
+]
+
+{ #category : #accessing }
+MCAbstractChange >> changeForList [
+	<MSEProperty: #changeForList type: #String >
+	<multivalued>
+		^self subclassResponsibility 
 ]
 
 { #category : #accessing }

@@ -1,42 +1,29 @@
 Class {
 	#name : #MCGumtreeImporter,
-	#superclass : #PPCompositeParser,
-	#instVars : [
-		'filesChanges',
-		'fileChange',
-		'newLine',
-		'fileName',
-		'changes'
-	],
+	#superclass : #MCGumtreeParser,
 	#category : #'Moose-Changes-Importer'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 MCGumtreeImporter >> changes [
-	^ ']' asParser negate star flatten, ']' asParser
+	
+	^ super changes
+		==> [ :node | | changesList |
+			changesList := node first , node second.
+			self jsonParser fromString: changesList ] 
 ]
 
 { #category : #accessing }
 MCGumtreeImporter >> fileChange [
-	^ newLine , fileName , newLine , changes
-]
-
-{ #category : #'as yet unclassified' }
-MCGumtreeImporter >> fileName [
-	^ newLine asParser negate star flatten
+	^ super fileChange ==> [ :node | node second  -> node fourth ]
 ]
 
 { #category : #accessing }
 MCGumtreeImporter >> filesChanges [
-	^ fileChange star
-]
-
-{ #category : #'as yet unclassified' }
-MCGumtreeImporter >> newLine [
-	^ String crlf asParser / #newline asParser
+	^ super filesChanges ==> [ :node | node asDictionary ]
 ]
 
 { #category : #accessing }
-MCGumtreeImporter >> start [
-	^ filesChanges
+MCGumtreeImporter >> jsonParser [
+	^ NeoJSONReader
 ]

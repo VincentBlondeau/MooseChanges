@@ -1,20 +1,17 @@
 Class {
-	#name : #MCGumtreeImporterTest,
-	#superclass : #MCGumtreeParserTest,
+	#name : #MCGumtreeParserTest,
+	#superclass : #PPCompositeParserTest,
 	#category : #'Moose-Changes-Tests-Importer'
 }
 
 { #category : #accessing }
-MCGumtreeImporterTest >> parserClass [
-	^ MCGumtreeImporter
+MCGumtreeParserTest >> parserClass [
+	^ MCGumtreeParser
 ]
 
-{ #category : #accessing }
-MCGumtreeImporterTest >> testParseAll [
-	| firstValue secondValue |
-	self
-		parse:
-			'
+{ #category : #tests }
+MCGumtreeParserTest >> testParseAll [
+	self parse: '
 genericXML-generator/src/main/java/com/awl/acq/bcmc/contract/xmlgenerator/generators/DPCTTerminalGenerator.java
 [
   {
@@ -55,33 +52,34 @@ genericXML-generator/src/test/java/com/awl/acq/bcmc/contract/xmlgenerator/genera
     "astType": "VariableDeclarationFragment",
     "qualifiedParentName": "com.awl.acq.bcmc.contract.xmlgenerator.generators;DPCTTerminalGeneratorTest.ctTerminal"
   }
-]'.
-	self assert: result size equals: 2.
-	firstValue := result at: 'genericXML-generator/src/main/java/com/awl/acq/bcmc/contract/xmlgenerator/generators/DPCTTerminalGenerator.java'.
-	secondValue := result at: 'genericXML-generator/src/test/java/com/awl/acq/bcmc/contract/xmlgenerator/generators/DPCTTerminalGeneratorTest.java'.
-	self assert: firstValue size equals: 1.
-	self assert: secondValue size equals: 6.
-	
-	
+]'
 ]
 
-{ #category : #accessing }
-MCGumtreeImporterTest >> testParseChange [
-	self
-		parse:
-			'[
+{ #category : #tests }
+MCGumtreeParserTest >> testParseChanges [
+	self parse: '[
   {
     "type": "Insert",
     "astType": "ExpressionStatement",
     "qualifiedParentName": "com.awl.acq.bcmc.contract.xmlgenerator.generators;DPCTTerminalGenerator;generateDPCTTerminalForCT(OkcKLinesV,CsiItemInstance)"
   }
-]'
-		rule: #changes.
-	self assert: result size equals: 1.
-	self assert: (result first at: #type) equals: 'Insert'.
-	self assert: (result first at: #astType) equals: 'ExpressionStatement'.
-	self
-		assert: (result first at: #qualifiedParentName)
-		equals:
-			'com.awl.acq.bcmc.contract.xmlgenerator.generators;DPCTTerminalGenerator;generateDPCTTerminalForCT(OkcKLinesV,CsiItemInstance)'
+]' rule: #changes
+]
+
+{ #category : #tests }
+MCGumtreeParserTest >> testParseFileChange [
+	self parse: '
+genericXML-generator/src/main/java/com/awl/acq/bcmc/contract/xmlgenerator/generators/DPCTTerminalGenerator.java
+[
+  {
+    "type": "Insert",
+    "astType": "ExpressionStatement",
+    "qualifiedParentName": "com.awl.acq.bcmc.contract.xmlgenerator.generators;DPCTTerminalGenerator;generateDPCTTerminalForCT(OkcKLinesV,CsiItemInstance)"
+  }
+]' rule: #fileChange
+]
+
+{ #category : #tests }
+MCGumtreeParserTest >> testParseFileName [
+	self parse: 'genericXML-generator/src/main/java/com/awl/acq/bcmc/contract/xmlgenerator/generators/DPCTTerminalGenerator.java' rule: #fileName
 ]

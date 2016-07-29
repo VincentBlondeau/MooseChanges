@@ -24,14 +24,13 @@ MCChangeMapperTest >> mapperClass [
 
 { #category : #'as yet unclassified' }
 MCChangeMapperTest >> result [
-
-	result := self mapperClass new createChangeFrom: data
+	^ result := self mapperClass new createChangeFrom: data
 ]
 
 { #category : #'as yet unclassified' }
 MCChangeMapperTest >> testMappingMethodDeclarationInsert [
 	self initializeDicoFrom: #(Insert MethodDeclaration  'com.awl.acq.bcmc.contract.xmlgenerator.generators;DPCTTerminalGeneratorTest;shouldHaveExpectedOnholdStatus()'). 
-	self assert: (self result isKindOf: MCAddEmptyMethod)
+	self assert: (self result isKindOf: MCAddEmptyMethod).
 ]
 
 { #category : #'as yet unclassified' }

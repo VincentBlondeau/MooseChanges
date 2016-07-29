@@ -4,3 +4,13 @@ Extension { #name : #FAMIXBehaviouralEntity }
 FAMIXBehaviouralEntity classSide >> changeAnnotation [
 	<MCType: #Simple>
 ]
+
+{ #category : #'*Moose-Changes' }
+FAMIXBehaviouralEntity >> changeType [
+		^ 'method'
+]
+
+{ #category : #'*Moose-Changes' }
+FAMIXBehaviouralEntity >> shouldBeConsideredAsChange [
+	^ true
+]

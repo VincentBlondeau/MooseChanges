@@ -5,7 +5,8 @@ Class {
 		'type',
 		'name',
 		'outgoingDependencies',
-		'incomingDependencies'
+		'incomingDependencies',
+		'entity'
 	],
 	#classVars : [
 		'ChangeTypeRegistry'
@@ -53,6 +54,16 @@ MCAbstractChange >> changeForList [
 		^self subclassResponsibility 
 ]
 
+{ #category : #'as yet unclassified' }
+MCAbstractChange >> entity [
+	^ entity
+]
+
+{ #category : #'as yet unclassified' }
+MCAbstractChange >> entity: aMooseEntity [
+	entity := aMooseEntity
+]
+
 { #category : #accessing }
 MCAbstractChange >> incomingDependencies [
 	^ incomingDependencies
@@ -88,6 +99,11 @@ MCAbstractChange >> outgoingDependencies [
 { #category : #accessing }
 MCAbstractChange >> outgoingDependencies: anObject [
 	outgoingDependencies := anObject
+]
+
+{ #category : #accessing }
+MCAbstractChange >> printOn: stream [
+	stream nextPutAll: (MooseModel meta descriptionOf: self class) name , '(' , self entity class name , ') ' , self entity mooseName
 ]
 
 { #category : #accessing }

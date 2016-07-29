@@ -10,3 +10,8 @@ MCChangeFieldInitializer class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #accessing }
+MCChangeFieldInitializer >> changeForList [
+	^ 'fieldInitializer'
+]

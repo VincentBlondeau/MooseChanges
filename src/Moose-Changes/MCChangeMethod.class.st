@@ -10,3 +10,8 @@ MCChangeMethod class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #accessing }
+MCChangeMethod >> changeForList [
+	^ 'methodBody'
+]

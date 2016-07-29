@@ -4,3 +4,8 @@ Extension { #name : #FAMIXScopingEntity }
 FAMIXScopingEntity classSide >> changeAnnotation [
 	<MCType: #Composite children: #childScopes>
 ]
+
+{ #category : #'*Moose-Changes' }
+FAMIXScopingEntity >> shouldBeConsideredAsChange [
+	^ false
+]

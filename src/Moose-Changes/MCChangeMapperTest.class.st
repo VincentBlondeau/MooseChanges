@@ -19,7 +19,7 @@ MCChangeMapperTest >> initializeDicoFrom: aCollection [
 
 { #category : #'as yet unclassified' }
 MCChangeMapperTest >> mapperClass [
-	^ MCChangeMapper
+	^ MCGumtreeChangeMapper
 ]
 
 { #category : #'as yet unclassified' }

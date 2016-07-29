@@ -10,3 +10,8 @@ MCChangeInitializer class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #accessing }
+MCChangeInitializer >> changeForList [
+	^ 'intializerDefinition'
+]

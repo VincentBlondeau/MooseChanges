@@ -10,3 +10,8 @@ MCDeleteInitializer class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #accessing }
+MCDeleteInitializer >> changeForList [
+	^ 'initializer'
+]

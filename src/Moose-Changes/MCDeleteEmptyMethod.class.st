@@ -10,3 +10,8 @@ MCDeleteEmptyMethod class >> annotation [
 	<package: #MooseChange>
 	
 ]
+
+{ #category : #accessing }
+MCDeleteEmptyMethod >> changeForList [
+	^'method'
+]

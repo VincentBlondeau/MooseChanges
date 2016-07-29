@@ -10,3 +10,8 @@ MCDeleteField class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #accessing }
+MCDeleteField >> changeForList [
+	^'field'
+]

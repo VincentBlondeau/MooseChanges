@@ -1,11 +1,11 @@
 Class {
-	#name : #MCChangeMapper,
-	#superclass : #Object,
+	#name : #MCGumtreeChangeMapper,
+	#superclass : #MCAbstractChangeMapper,
 	#category : #'Moose-Changes-Importer'
 }
 
 { #category : #'as yet unclassified' }
-MCChangeMapper >> createChangeFrom: aDictionary [
+MCGumtreeChangeMapper >> createChangeFrom: aDictionary [
 	| changeType typeSuperClass changeEntity classMetaDescr splitName |
 	changeType := self findTypeOfChange: (aDictionary at: #type).
 	typeSuperClass := self modelSuperClass subclasses byName: changeType.
@@ -18,22 +18,17 @@ MCChangeMapper >> createChangeFrom: aDictionary [
 ]
 
 { #category : #'as yet unclassified' }
-MCChangeMapper >> findElementOfChange: aString [
+MCGumtreeChangeMapper >> findElementOfChange: aString [
 	^ {('MethodDeclaration' -> 'method')} asDictionary at: aString ifAbsent: [ self shouldBeImplemented ]
 ]
 
 { #category : #'as yet unclassified' }
-MCChangeMapper >> findTypeOfChange: aString [ 
+MCGumtreeChangeMapper >> findTypeOfChange: aString [ 
 	^ { 'Insert' -> 'Add' } asDictionary at: aString ifAbsent: [ self shouldBeImplemented  ]
 ]
 
 { #category : #'as yet unclassified' }
-MCChangeMapper >> modelSuperClass [
-	^ MooseModel meta elementNamed: 'MooseChange.AbstractChange'
-]
-
-{ #category : #'as yet unclassified' }
-MCChangeMapper >> parseQualifiedName: aString [
+MCGumtreeChangeMapper >> parseQualifiedName: aString [
 	| splitString return classSubstrings |
 	splitString := aString substrings: ';'.
 	classSubstrings := splitString second substrings: '.'.

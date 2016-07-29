@@ -10,3 +10,8 @@ MCChangeLookup class >> annotation [
 	<package: #MooseChange>
 
 ]
+
+{ #category : #'as yet unclassified' }
+MCChangeLookup >> changeForList [
+	^ 'lookup'
+]

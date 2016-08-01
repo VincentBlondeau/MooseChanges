@@ -6,6 +6,11 @@ FAMIXParameter >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXParameter >> selectedTests [
+	^ self belongsTo selectedTests
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXParameter >> shouldBeConsideredAsChange [
 	^ true
 ]

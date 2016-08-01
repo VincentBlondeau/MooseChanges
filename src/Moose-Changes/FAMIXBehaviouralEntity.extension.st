@@ -7,7 +7,19 @@ FAMIXBehaviouralEntity classSide >> changeAnnotation [
 
 { #category : #'*Moose-Changes' }
 FAMIXBehaviouralEntity >> changeType [
-		^ 'method'
+	self isFieldInitializer
+		ifTrue: [ ^ 'fieldInitializer' ].
+	self isConstructor
+		ifTrue: [ ^ 'initializer' ].
+	^ 'method'
+]
+
+{ #category : #'*Moose-Changes' }
+FAMIXBehaviouralEntity >> isFieldInitializer [
+	<MSEProperty: #isFieldInitializer type: #Boolean>
+	<derived>
+	<MSEComment: 'Is the method regrouping all the fields initializers of a class'>
+	^ self name = '<Initializer>'
 ]
 
 { #category : #'*Moose-Changes' }

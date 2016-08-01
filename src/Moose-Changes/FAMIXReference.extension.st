@@ -6,6 +6,11 @@ FAMIXReference >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXReference >> selectedTests [
+	^ {} 
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXReference >> shouldBeConsideredAsChange [
 	^ true
 ]

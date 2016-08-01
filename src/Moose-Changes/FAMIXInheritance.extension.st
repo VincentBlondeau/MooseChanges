@@ -6,6 +6,12 @@ FAMIXInheritance >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXInheritance >> selectedTests [
+	^ {} "self from selectedTests"
+
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXInheritance >> shouldBeConsideredAsChange [
 	^ true
 ]

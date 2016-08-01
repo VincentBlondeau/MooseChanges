@@ -2,6 +2,7 @@ Class {
 	#name : #MCAbstractChange,
 	#superclass : #MooseEntity,
 	#instVars : [
+		'famixDiffEntity',
 		'type',
 		'name',
 		'outgoingDependencies',
@@ -54,14 +55,26 @@ MCAbstractChange >> changeForList [
 		^self subclassResponsibility 
 ]
 
+{ #category : #accessing }
+MCAbstractChange >> doesNotUnderstand: aMessage [
+	^ aMessage sendTo: self entity
+]
+
 { #category : #'as yet unclassified' }
 MCAbstractChange >> entity [
+	<MSEProperty: #entity type: #MooseEntity>
+	<MSEComment: 'Entity related to change'>
 	^ entity
 ]
 
 { #category : #'as yet unclassified' }
 MCAbstractChange >> entity: aMooseEntity [
 	entity := aMooseEntity
+]
+
+{ #category : #'as yet unclassified' }
+MCAbstractChange >> famixDiffEntity: aFamixChange [ 
+	famixDiffEntity := aFamixChange 
 ]
 
 { #category : #accessing }
@@ -83,6 +96,8 @@ MCAbstractChange >> initialize [
 
 { #category : #accessing }
 MCAbstractChange >> name [
+		<MSEProperty: #name type: #String>
+	<MSEComment: 'Name of the entity'>
 	^ name
 ]
 

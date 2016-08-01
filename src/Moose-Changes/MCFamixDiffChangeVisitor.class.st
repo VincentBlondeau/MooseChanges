@@ -23,6 +23,11 @@ MCFamixDiffChangeVisitor >> changeDelFameClasses [
 		, (self modelSuperClass subclasses byName: 'Change') allSubclasses
 ]
 
+{ #category : #'as yet unclassified' }
+MCFamixDiffChangeVisitor >> changes [
+	^ changes
+]
+
 { #category : #initialization }
 MCFamixDiffChangeVisitor >> initialize [
 	super initialize.
@@ -38,6 +43,7 @@ MCFamixDiffChangeVisitor >> visitAddChange: aFamixAddChange [
 		detect: [ :e | e isClassForChange: aFamixAddChange entity changeType ].
 	change := fameClassToInstanciate implementingClass new.
 	change entity: aFamixAddChange entity.
+	change famixDiffEntity: aFamixAddChange.
 	self addChange: change
 ]
 
@@ -50,5 +56,6 @@ MCFamixDiffChangeVisitor >> visitRemovalChange: aFamixRemovalChange [
 		detect: [ :e | e isClassForChange: aFamixRemovalChange entity changeType ].
 	change := fameClassToInstanciate implementingClass new.
 	change entity: aFamixRemovalChange entity.
+	change famixDiffEntity: aFamixRemovalChange.
 	self addChange: change
 ]

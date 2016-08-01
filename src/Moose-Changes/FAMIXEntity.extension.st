@@ -11,6 +11,11 @@ FAMIXEntity >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXEntity >> selectedTests [
+	^ self subclassResponsibility
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXEntity >> shouldBeConsideredAsChange [
 	^self subclassResponsibility 
 ]

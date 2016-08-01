@@ -6,6 +6,11 @@ FAMIXLocalVariable >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXLocalVariable >> selectedTests [
+	^ self belongsTo selectedTests
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXLocalVariable >> shouldBeConsideredAsChange [
 	^true
 ]

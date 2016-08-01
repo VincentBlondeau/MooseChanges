@@ -6,6 +6,11 @@ FAMIXClass >> changeType [
 ]
 
 { #category : #'*Moose-Changes' }
+FAMIXClass >> selectedTests [
+	^ self methods flatCollect: #selectedTests
+]
+
+{ #category : #'*Moose-Changes' }
 FAMIXClass >> shouldBeConsideredAsChange [
 	^ true
 ]

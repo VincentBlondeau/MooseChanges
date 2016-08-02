@@ -48,6 +48,18 @@ MCFamixDiffChangeVisitor >> visitAddChange: aFamixAddChange [
 ]
 
 { #category : #visitor }
+MCFamixDiffChangeVisitor >> visitPairedChange: aFamixRenameChange [
+	| fameClassToInstanciate change |
+	aFamixRenameChange entity shouldBeConsideredAsChange
+		ifFalse: [ ^ self ].
+	fameClassToInstanciate := self changeAddFameClasses detect: [ :e | e isClassForChange: aFamixRenameChange entity changeType ].
+	change := fameClassToInstanciate implementingClass new.
+	change entity: aFamixRenameChange entity.
+	change famixDiffEntity: aFamixRenameChange.
+	self addChange: change
+]
+
+{ #category : #visitor }
 MCFamixDiffChangeVisitor >> visitRemovalChange: aFamixRemovalChange [
 	| fameClassToInstanciate change |
 	aFamixRemovalChange entity shouldBeConsideredAsChange

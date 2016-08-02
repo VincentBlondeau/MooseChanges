@@ -49,8 +49,10 @@ MCFamixDiffChangeMapper >> run [
 	diff base: sourceModel.
 	diff target: targetModel.
 	diff diff sort.
-	changes := MCFamixDiffChangeMapper new createChangesFrom: (diff sortedChanges select: [ :e | e entity isStub not ]).
-	tests := (changes collect: [ :e | e selectedTests ] as: Set) flatten.
+	changes := self
+		createChangesFrom: (diff sortedChanges select: [ :e | e entity isStub not ]).
+	tests := (changes collect: [ :e | e selectedTests ] as: Set) flatten asSet
+		sorted: [ :a :b | a mooseName < b mooseName ].
 	self writeSelectedTests: tests
 ]
 
@@ -65,6 +67,8 @@ MCFamixDiffChangeMapper >> writeSelectedTests: aCollectionOfSelectedTests [
 	selectedTestsOutput parent ensureCreateDirectory.
 	selectedTestsOutput ensureDelete.
 	[ stream := selectedTestsOutput writeStream.
-	aCollectionOfSelectedTests do: [ :entity | stream << entity mooseName ] separatedBy: [ stream crlf ] ]
+	(aCollectionOfSelectedTests collect: #mooseName as: Set) asOrderedCollection sorted
+		do: [ :entityName | stream << entityName ]
+		separatedBy: [ stream crlf ] ]
 		ensure: [ stream close ]
 ]
